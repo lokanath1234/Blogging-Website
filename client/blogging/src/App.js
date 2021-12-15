@@ -1,18 +1,18 @@
 import React from 'react';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
+import { Authpage } from './Components/Authpage/Authpage';
+import { Userdashboard } from './Components/userDahsboardpage/Userdashboard';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
 function App() {
-
-  let [message, setMessage] = useState("Hello there");
-
-  useEffect(() => {
-    axios.get('http://localhost:8000/').then(res => {
-      setMessage(res.data.message)
-    })
-  }, [])
-
   return (
-    <h1>{message}</h1>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/auth" element={<Authpage />}></Route>
+        <Route path="/" element={<Userdashboard />}></Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
